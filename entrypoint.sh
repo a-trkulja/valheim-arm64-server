@@ -2,7 +2,7 @@
 
 # update server's data
 /home/steam/steamcmd/steamcmd.sh \
-	    +force_install_dir /home/steam/valheim/server \
+        +force_install_dir /home/steam/valheim/server/ \
         +login anonymous \
         +app_update 896660 \
         +exit
@@ -11,10 +11,10 @@
 cp /home/steam/steamcmd/linux64/steamclient.so /home/steam/valheim/server/
 
 # Apply default values for server if not set
-SERVER_NAME=${SERVER_NAME:-My\ server}
-SERVER_PORT=${SERVER_PORT:-2456}
-SERVER_WORLD=${SERVER_WORLD:-Dedicated}
-SERVER_PASSWORD=${SERVER_PASSWORD:-secret}
+VALHEIM_SERVER_NAME=${VALHEIM_SERVER_NAME:-My\ server}
+VALHEIM_SERVER_PUBLIC=${VALHEIM_SERVER_PUBLIC:0}
+VALHEIM_SERVER_WORLD=${VALHEIM_SERVER_WORLD:-Dedicated}
+VALHEIM_SERVER_PASSWORD=${VALHEIM_SERVER_PASSWORD:-secret}
 
 # Launch server
 export templdpath=$LD_LIBRARY_PATH

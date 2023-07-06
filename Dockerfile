@@ -27,7 +27,10 @@ RUN ./steamcmd/steamcmd.sh +quit && \
     mkdir -pv /home/steam/.steam/sdk32/ && \
     ln -s /home/steam/steamcmd/linux32/steamclient.so /home/steam/.steam/sdk32/steamclient.so
 
+WORKDIR /home/steam/valheim/data
 VOLUME ["/home/steam/valheim/data"]
+
+WORKDIR /home/steam/valheim/server
 
 # start the server main script
 ENTRYPOINT ["bash", "/home/steam/entrypoint.sh"]
