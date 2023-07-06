@@ -1,0 +1,6 @@
+sudo docker login --username atrkulja
+sudo docker build -t atrkulja/valheim-arm64-server .
+sudo docker push atrkulja/valheim-arm64-server
+
+# For debug
+sudo docker build --progress=plain --no-cache -t atrkulja/valheim-arm64-server .
