@@ -25,7 +25,7 @@ echo "Starting server PRESS CTRL-C to exit"
 
 # NOTE: Minimum password length is 5 characters & Password cant be in the server name.
 # NOTE: You need to make sure the ports 2456-2458 is being forwarded to your server through your local router & firewall.
-/home/steam/valheim/server/valheim_server.x86_64 -nographics -batchmode -port 2456 -public ${VALHEIM_SERVER_PUBLIC} -name "${VALHEIM_SERVER_NAME}" -world "${VALHEIM_SERVER_WORLD}" -password "${VALHEIM_SERVER_PASSWORD}" -savedir "/home/steam/valheim/data"
+/home/steam/valheim/server/valheim_server.x86_64 -nographics -batchmode -port 2456 -public ${VALHEIM_SERVER_PUBLIC} -name "${VALHEIM_SERVER_NAME}" -world "${VALHEIM_SERVER_WORLD}" -password "${VALHEIM_SERVER_PASSWORD}" -savedir "/home/steam/valheim/data" $SERVER_ARGS
 
 # Trap container stop for graceful exit
 trap "kill -SIGINT $!;" SIGTERM
