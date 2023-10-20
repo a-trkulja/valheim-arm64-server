@@ -3,14 +3,14 @@ FROM atrkulja/x86_64-on-arm64
 # install dependencies
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y curl
+    apt-get install -y curl apt-utils
 
 # setup steam user
 RUN useradd -m steam
 WORKDIR /home/steam
 USER steam
 
-COPY entrypoint.sh .
+COPY --chown=steam entrypoint.sh .
 
 # install valheim server using steamcmd
 ENV VALHEIM_SERVER_PASSWORD=password \
@@ -26,6 +26,9 @@ RUN mkdir steamcmd && cd steamcmd && \
 RUN ./steamcmd/steamcmd.sh +quit && \
     mkdir -pv /home/steam/.steam/sdk32/ && \
     ln -s /home/steam/steamcmd/linux32/steamclient.so /home/steam/.steam/sdk32/steamclient.so
+
+RUN mkdir -pv /home/steam/valheim/data && \
+    mkdir -pv /home/steam/valheim/server
 
 WORKDIR /home/steam/valheim/data
 VOLUME ["/home/steam/valheim/data"]
