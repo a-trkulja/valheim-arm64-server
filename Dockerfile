@@ -5,6 +5,9 @@ RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y curl apt-utils
 
+# install necessary libs for crossplay
+RUN apt-get install -y libpulse-dev libatomic1 libc6
+
 # setup steam user
 RUN useradd -m steam
 WORKDIR /home/steam
